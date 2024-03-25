@@ -4,6 +4,7 @@ import { solution } from './Ejer/ejer3'
 import { findOdd } from './Ejer/ejer4'
 import { countBits } from './Ejer/ejer5'
 import { pigIt } from './Ejer/ejer6'
+import {narcissistic} from './Ejer/ejer7'
 
 
-console.log(pigIt("Hello world !"));
+console.log(narcissistic(7));
