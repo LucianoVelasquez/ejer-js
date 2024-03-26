@@ -5,6 +5,7 @@ import { findOdd } from './Ejer/ejer4'
 import { countBits } from './Ejer/ejer5'
 import { pigIt } from './Ejer/ejer6'
 import {narcissistic} from './Ejer/ejer7'
+import {tribonacci} from './Ejer/ejer8'
 
-
-console.log(narcissistic(7));
+console.log(tribonacci([1, 1, 1],8));
+ 
