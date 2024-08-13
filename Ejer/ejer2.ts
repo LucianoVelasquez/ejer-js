@@ -11,15 +11,21 @@
 
  */
 
-export function XO(str:string){
-  
-  if(!str.toLowerCase().includes("x") && !str.toLowerCase().includes("o")) return true;
+export function XO(str: string) {
+  if (!str.toLowerCase().includes("x") && !str.toLowerCase().includes("o"))
+    return true;
 
-  const x = str.toLowerCase().split("").filter((e)=> e == "x");
-  const o = str.toLowerCase().split("").filter((e)=> e == "o");
-  
-  console.log({x: x.length,o: o.length});
+    const x = str
+    .toLowerCase()
+    .split("")
+    .filter((e) => e == "x");
+  const o = str
+    .toLowerCase()
+    .split("")
+    .filter((e) => e == "o");
 
-  return x.length == o.length
+  console.log({ x: x.length, o: o.length });
 
+  return x.length == o.length;
 }
+
