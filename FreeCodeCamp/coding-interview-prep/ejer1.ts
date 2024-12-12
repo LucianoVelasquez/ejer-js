@@ -18,12 +18,29 @@
 
 */
  
-export function diferenciaSimetrica(conjunA : number[], conjunB : number[]){
+export function diferenciaSimetrica(...args : number[][]){
 
   let result : number[] = [];
 
-  result = result.concat(busquedaDenumero(conjunA,conjunB));
-  result = result.concat(busquedaDenumero(conjunB,conjunA))
+  if(args.length == 2){
+    result = result.concat(busquedaDenumero(args[0],args[1]));
+    result = result.concat(busquedaDenumero(args[1],args[0]));
+
+    return result;
+  }
+
+  if(args.length == 3){
+
+    let salida : number[] = []
+
+    result = result.concat(busquedaDenumero(args[0],args[1]));
+    result = result.concat(busquedaDenumero(args[1],args[0]));
+
+    salida = salida.concat(busquedaDenumero(args[2],result));
+    salida = salida.concat(busquedaDenumero(result,args[2]));
+
+    return salida;
+  } 
 
   return result;
 }
@@ -36,19 +53,13 @@ function busquedaDenumero(conjunto1 : number[],conjunto2 : number[]) : number[]{
     
     let findElement : number | undefined = conjunto2.find((elemnt) => conjunto1[i] == elemnt );
 
-    if(findElement == undefined){
-      
-        preResult.push(conjunto1[i]);
-
+    if(findElement == undefined && !preResult.includes(conjunto1[i])){
+        preResult.push(conjunto1[i]); 
     }
-
      
   }
 
   return preResult;
 }
 
-function eliminarRepetidos(array : number[]){
-  /* Repasar algoritmo de busqueda */
-}
 
