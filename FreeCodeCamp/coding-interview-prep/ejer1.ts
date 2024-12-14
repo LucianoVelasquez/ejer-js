@@ -14,7 +14,10 @@
        e      
   B = {2, 3, 4}
 
-  A △ B = {1}
+  A △ B = {1,4}
+
+  Recorrer el primer array y preguntar si cada elementeo no se encuentra incluido.
+    Si el elemnto no se encuentro incluido pushearlo al nuevo array.
 
 */
  
@@ -23,23 +26,116 @@ export function diferenciaSimetrica(...args : number[][]){
   let result : number[] = [];
 
   if(args.length == 2){
-    result = result.concat(busquedaDenumero(args[0],args[1]));
-    result = result.concat(busquedaDenumero(args[1],args[0]));
 
-    return result;
+    const A = args[0];
+    const B = args[1];
+    let AxB : number[] = [];
+
+    AxB = AxB.concat(busquedaDenumero(A,B));
+    AxB = AxB.concat(busquedaDenumero(B,A));
+
+    return AxB;
   }
 
   if(args.length == 3){
 
-    let salida : number[] = []
+    const A = args[0];
+    const B = args[1];
+    const C = args[2];
+    let AxB : number[] = [];
+    let AxBxC : number[] = []
 
-    result = result.concat(busquedaDenumero(args[0],args[1]));
-    result = result.concat(busquedaDenumero(args[1],args[0]));
+    AxB = AxB.concat(busquedaDenumero(A,B));
+    AxB = AxB.concat(busquedaDenumero(B,A));
 
-    salida = salida.concat(busquedaDenumero(args[2],result));
-    salida = salida.concat(busquedaDenumero(result,args[2]));
+    AxBxC = AxBxC.concat(busquedaDenumero(C,AxB));
+    AxBxC = AxBxC.concat(busquedaDenumero(AxB,C));
 
-    return salida;
+    return AxBxC;
+  } 
+
+  if(args.length == 4){
+
+    const A = args[0];
+    const B = args[1];
+    const C = args[2];
+    const D = args[3];
+    let AxB : number[] = [];
+    let AxBxC : number[] = []
+    let AxBxCxD : number[] = []
+
+    AxB = AxB.concat(busquedaDenumero(A,B));
+    AxB = AxB.concat(busquedaDenumero(B,A));
+
+    AxBxC = AxBxC.concat(busquedaDenumero(C,AxB));
+    AxBxC = AxBxC.concat(busquedaDenumero(AxB,C));
+
+    AxBxCxD = AxBxCxD.concat(busquedaDenumero(D,AxBxC));
+    AxBxCxD = AxBxCxD.concat(busquedaDenumero(AxBxC,D));
+    
+
+    return AxBxCxD;
+  } 
+
+  if(args.length == 5){
+
+    const A = args[0];
+    const B = args[1];
+    const C = args[2];
+    const D = args[3];
+    const E = args[4];
+    let AxB : number[] = [];
+    let AxBxC : number[] = []
+    let AxBxCxD : number[] = []
+    let AxBxCxDxE : number[] = []
+
+    AxB = AxB.concat(busquedaDenumero(A,B));
+    AxB = AxB.concat(busquedaDenumero(B,A));
+
+    AxBxC = AxBxC.concat(busquedaDenumero(C,AxB));
+    AxBxC = AxBxC.concat(busquedaDenumero(AxB,C));
+
+    AxBxCxD = AxBxCxD.concat(busquedaDenumero(D,AxBxC));
+    AxBxCxD = AxBxCxD.concat(busquedaDenumero(AxBxC,D));
+
+    AxBxCxDxE = AxBxCxDxE.concat(busquedaDenumero(E,AxBxCxD));
+    AxBxCxDxE = AxBxCxDxE.concat(busquedaDenumero(AxBxCxD,E));
+    
+
+    return AxBxCxDxE;
+  } 
+
+  if(args.length == 6){
+
+    const A = args[0];
+    const B = args[1];
+    const C = args[2];
+    const D = args[3];
+    const E = args[4];
+    const F = args[5];
+    let AxB : number[] = [];
+    let AxBxC : number[] = []
+    let AxBxCxD : number[] = []
+    let AxBxCxDxE : number[] = []
+    let AxBxCxDxExF : number[] = []
+
+    AxB = AxB.concat(busquedaDenumero(A,B));
+    AxB = AxB.concat(busquedaDenumero(B,A));
+
+    AxBxC = AxBxC.concat(busquedaDenumero(C,AxB));
+    AxBxC = AxBxC.concat(busquedaDenumero(AxB,C));
+
+    AxBxCxD = AxBxCxD.concat(busquedaDenumero(D,AxBxC));
+    AxBxCxD = AxBxCxD.concat(busquedaDenumero(AxBxC,D));
+
+    AxBxCxDxE = AxBxCxDxE.concat(busquedaDenumero(E,AxBxCxD));
+    AxBxCxDxE = AxBxCxDxE.concat(busquedaDenumero(AxBxCxD,E));
+
+    AxBxCxDxExF = AxBxCxDxExF.concat(busquedaDenumero(F,AxBxCxDxE));
+    AxBxCxDxExF = AxBxCxDxExF.concat(busquedaDenumero(AxBxCxDxE,F));
+    
+
+    return AxBxCxDxExF;
   } 
 
   return result;
