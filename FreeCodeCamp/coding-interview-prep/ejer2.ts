@@ -8,21 +8,58 @@
  La matriz de inventario devuelta debe estar en orden alfabético por artículo
 
 */
+//                                                                      I
+//[2, "Hair Pin"],[3, "Half-Eaten Apple"],[67, "Bowling Ball"],[7, "Toothpaste"]
 
-export function updateInventory(arr1 : [number,string][], arr2 : [number,string][]) {
+//                                                                j                                                                                         
+//[21, "Bowling Ball"],[2, "Dirty Sock"],[1, "Hair Pin"],[5, "Microphone"]
 
-  //Recorrermos el inventario actual.
-  for (let i = 0; i < arr1.length; i++) {
+export function updateInventory(invActual : [number,string][], invNuevo : [number,string][]) {
 
-    //Recorremos el nuevo inventario.
-    for (let j  = 0; j  < arr2.length; j++) {
+  let existeArticulo : boolean = false;
+
+  //Recorrermos el inventario nuevo.
+  for (let i = 0; i < invNuevo.length; i++) {
+
+    existeArticulo = false;
+
+    //Recorremos el actual inventario.
+    for (let j  = 0; j  < invActual.length; j++) {
       
-      if(arr1[i].includes(arr2[j][1])){
-        
-        arr1[i][0] = arr1[i][0]+arr2[j][0];
-        arr1 = arr1.filter((elemt) => elemt[1] != arr2[j][1]);
-        arr2 = arr2.filter((elemt) => elemt[1] != arr1[j][1]);
+      if(invNuevo[i][1].includes(invActual[j][1])){ 
 
+        existeArticulo = true;
+        invActual[j][0] = invActual[j][0]+invNuevo[i][0];
+        
+        //invNuevo = invNuevo.filter((elemt) => elemt[1] != invActual[j][1]);
+        break;
+      }
+    }
+
+    if(!existeArticulo){
+      invActual.push(invNuevo[i]);
+    }
+    
+  }
+
+
+
+  return ordenarAlfabeticamente(invActual);
+}
+
+function ordenarAlfabeticamente(array : [number,string][]) {
+
+  let aux : [number,string];
+
+  for (let i = 0; i < array.length; i++) {
+    
+    for (let j = 0; j < array.length-1; j++) {
+      
+      if(array[j][1] > array[j+1][1]){
+
+        aux = array[j];
+        array[j] = array[j+1];
+        array[j+1] = aux; 
 
       }
       
@@ -30,12 +67,7 @@ export function updateInventory(arr1 : [number,string][], arr2 : [number,string]
     
   }
 
-  arr2.map((e) =>{
-    arr1.push(e);
-  })
-
-
-  return arr1;
+  return array;
 }
 
 
